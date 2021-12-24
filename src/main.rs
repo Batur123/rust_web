@@ -1,7 +1,5 @@
 mod database;
-
 #[macro_use] extern crate rocket;
-
 use rocket::{Build, Rocket};
 use rocket::fs::{FileServer, relative};
 
@@ -13,6 +11,8 @@ fn index() -> &'static str {
 #[launch]
 fn rocket() -> Rocket<Build> // veya -> _
 {
+    database::create_database();
+
     rocket::build()
         .mount("/", routes![index])
         .mount("/public", FileServer::from(relative!("public/")))
