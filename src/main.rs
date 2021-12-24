@@ -1,11 +1,12 @@
+mod database;
+
 #[macro_use] extern crate rocket;
 
 use rocket::{Build, Rocket};
 use rocket::fs::{FileServer, relative};
 
 #[get("/")]
-fn index() -> &'static str
-{
+fn index() -> &'static str {
     "Hello, world!"
 }
 
